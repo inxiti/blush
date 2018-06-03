@@ -10,13 +10,12 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
-set $BORDER_SIZE 8
+set $BORDER_SIZE 10
 # pink color: #bf5b75
-set $COLOR_ACCENT       #cccccc
+set $COLOR_ACCENT       #928374
 set $COLOR_HIGHLIGHT    #aaaaaa
-set $COLOR_NORMAL       #111111
-# set $COLOR_INDICATOR    #f76d47
-set $COLOR_INDICATOR    #ffffff
+set $COLOR_NORMAL       #1d2021
+set $COLOR_INDICATOR    #928374
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
