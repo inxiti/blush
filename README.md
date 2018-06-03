@@ -10,3 +10,7 @@ Theme for:
 - polybar
 - dunst
 - rofi
+
+## TODO
+
+Screenshots, refactoring, better structure, etc...
