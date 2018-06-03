@@ -1,0 +1,155 @@
+! Font rendering
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintfull
+
+! URxvt specific
+URxvt*termName: xterm-256color
+URxvt.font: xft:IBM Plex Mono:size=12
+URxvt.scrollBar: false
+URxvt.letterSpace: 0
+URxvt.lineSpace: 1
+URxvt.loginShell: true
+URxvt.perl-ext-common: default,matcher,selection-to-clipboard
+URxvt.url-launcher: /usr/bin/firefox-beta
+URxvt.matcher.button: 1
+URxvt.internalBorder: 12
+URxvt.depth: 32
+! URxvt*transparent: false
+! URxvt*shading: 10
+
+! Colors
+URxvt.background:   #1d2021
+URxvt.foreground:   #aaaaaa
+URxvt.cursorColor:  #aaaaaa
+URxvt.color0:       #454945
+URxvt.color1:       #bf5b75
+URxvt.color2:       #9dc26d
+URxvt.color3:       #e1c236
+URxvt.color4:       #7ca8dc
+URxvt.color5:       #ad94cf
+URxvt.color6:       #70a8bb
+URxvt.color7:       #fbfbf8
+
+URxvt.color8:       #787a78
+URxvt.color9:       #ff99aa
+URxvt.color10:      #aaffdd
+URxvt.color11:      #ffddaa
+URxvt.color12:      #aaaaff
+URxvt.color13:      #ffbbff
+URxvt.color14:      #aaffff
+URxvt.color15:      #ffffff
+
+! rofi colors
+#define COLOR_ROFI_BACKGROUND           #eeeeee
+#define COLOR_ROFI_BACKGROUND_ALT       COLOR_ROFI_BACKGROUND
+#define COLOR_ROFI_FOREGROUND           #111111
+#define COLOR_ROFI_HIGHLIGHT_BACKGROUND #48b9c7
+#define COLOR_ROFI_HIGHLIGHT_FOREGROUND #ffffff 
+#define COLOR_ROFI_WINDOW               COLOR_ROFI_BACKGROUND
+#define COLOR_ROFI_WINDOW_BORDER        COLOR_ROFI_HIGHLIGHT_BACKGROUND
+#define COLOR_ROFI_ACTIVE               COLOR_ROFI_HIGHLIGHT_BACKGROUND
+
+! rofi specific
+! Enabled modi
+rofi.modi:                           window,run
+! Window opacity
+rofi.opacity:                        90
+! Window width
+rofi.width:                          20
+! Number of lines
+rofi.lines:                          5
+! Number of columns
+rofi.columns:                        1
+! Font to use
+rofi.font:                           IBM Plex Sans 14 
+! Color scheme for normal row        bg      fg      bgalt   hlbg    hlfg
+rofi.color-normal:                   COLOR_ROFI_BACKGROUND, COLOR_ROFI_FOREGROUND, COLOR_ROFI_BACKGROUND_ALT, COLOR_ROFI_HIGHLIGHT_BACKGROUND, COLOR_ROFI_HIGHLIGHT_FOREGROUND
+! Color scheme for urgent row
+rofi.color-urgent:                   #fdf6e3,#dc322f,#eee8d5,#ff0000,#fdf6e3
+! Color scheme for active row
+rofi.color-active:                   COLOR_ROFI_BACKGROUND, COLOR_ROFI_HIGHLIGHT_FOREGROUND, COLOR_ROFI_BACKGROUND_ALT, COLOR_ROFI_ACTIVE, COLOR_ROFI_HIGHLIGHT_FOREGROUND
+! Color scheme window                window  border
+rofi.color-window:                   COLOR_ROFI_WINDOW, COLOR_ROFI_WINDOW_BORDER
+! Border width
+rofi.bw:                             0
+! Location on screen
+rofi.location:                       2
+! Padding
+rofi.padding:                        15
+! Y-offset relative to location
+rofi.yoffset:                        52
+! X-offset relative to location
+rofi.xoffset:                        0
+! Always show number of lines
+rofi.fixed-num-lines:                false
+! Terminal to use
+rofi.terminal:                       urxvt
+! Ssh client to use
+rofi.ssh-client:                     ssh
+! Ssh command to execute
+rofi.ssh-command:                    {terminal} -e {ssh-client} {host}
+! Run command to execute
+rofi.run-command:                    {cmd}
+! Command to get extra run targets
+rofi.run-list-command:
+! Run command to execute that runs in shell
+rofi.run-shell-command:              {terminal} -e {cmd}
+! Command executed on accep-entry-custom for window modus
+rofi.window-command:                 xkill -id {window}
+! Disable history in run/ssh
+rofi.disable-history:                false
+! Use levenshtein sorting
+rofi.levenshtein-sort:               false
+! Set case-sensitivity
+rofi.case-sensitive:                 false
+! Cycle through the results list
+rofi.cycle:                          true
+! Enable sidebar-mode
+rofi.sidebar-mode:                   false
+! Row height (in chars)
+rofi.eh:                             1
+! Enable auto select mode
+rofi.auto-select:                    false
+! Parse hosts file for ssh mode
+rofi.parse-hosts:                    false
+! Parse known_hosts file for ssh mode
+rofi.parse-known-hosts:              true
+! Set the modi to combine in combi mode
+rofi.combi-modi:                     window,run
+! Do a more fuzzy matching
+rofi.fuzzy:                          false
+! Use glob matching
+rofi.glob:                           false
+! Use regex matching
+rofi.regex:                          false
+! Tokenize input string
+rofi.tokenize:                       true
+! Monitor id to show on
+rofi.m:                              -1
+! Margin between rows
+rofi.line-margin:                    2
+! Pre-set filter
+rofi.filter:
+! Separator style (none, dash, solid)
+rofi.separator-style:                none
+! Hide scroll-bar
+rofi.hide-scrollbar:                 true
+! Fullscreen
+rofi.fullscreen:                     false
+! Fake transparency
+rofi.fake-transparency:              false
+! DPI
+rofi.dpi:                            -1
+! Threads to use for string matching
+rofi.threads:                        1
+! Scrollbar width
+rofi.scrollbar-width:                8
+! Scrolling method. (0: Page, 1: Centered)
+rofi.scroll-method:                  0
+! Background to use for fake transparency. (background or screenshot)
+rofi.fake-background:                screenshot
+! Pidfile location
+rofi.pid:                            /run/user/1000/rofi.pid

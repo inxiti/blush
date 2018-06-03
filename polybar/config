@@ -1,0 +1,247 @@
+; MUST TODO, BUG?, NOT ADDED?:
+;   i3 workspaces, need a padding on left/right, just one space, why is this impossible?
+;
+; TODO:
+;   color background of urgent workspaces and test
+;   add email notification icon
+;   button that runs 'rofi -show run -display-run "[run]"'
+;   better/different bitmap font?
+;   move some more settings regarding appearance to the theme if possible
+;
+
+[settings]
+include-file = /home/inxiti/.config/polybar/themes/gruvbox
+screenchange-reload = true
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+[spacing]
+padding = 1
+margin = 2
+
+[bar/default]
+;;; appearance
+bottom = false 
+border-top-size = 0
+border-bottom-size = 0
+height = 35
+width = 3440
+padding-left = 2
+padding-right = 3
+monitor = DisplayPort-1
+
+;;; modules available: cpu date filesystem memory i3 mpd-title mpd powermenu temperature time volume xwindow
+module-margin = 0
+modules-left = i3 new-workspace xwindow
+modules-center = mpd-title mpd
+modules-right = volume date time powermenu
+
+; system tray
+; tray-position = right
+; tray-transparent = false
+; tray-background = ${settings/colors.background}
+; tray-maxsize = 20
+
+border-color = ${settings/colors.border}
+background = ${settings/colors.background}
+foreground = ${settings/colors.foreground}
+
+[module/i3]
+type = internal/i3
+
+index-sort = true
+wrapping-scroll = false
+
+format-padding-left = ${spacing.padding}
+format-prefix-margin-left = 3
+format = "<label-state> <label-mode>"
+
+format-prefix = "    "
+
+label-focused = "  %index% "
+label-separator = "|"
+label-unfocused = "  %index%  "
+label-urgent = "  %index% "
+
+;;; alternative text/icons for workspaces
+; format-prefix = "  shadowmoor  "
+; format-prefix = "  " ; nintendo switch
+; format-prefix = "  "
+; format-prefix = "  "
+; label-focused = "    "
+; label-focused = "  "
+; label-focused = " %index% "
+; label-unfocused = " %{T3}%{T-} "
+; label-unfocused = "  "
+; label-unfocused = %{T3}%{T-}
+; label-unfocused = "  "
+; label-unfocused = " • "
+; label-urgent = %index%
+
+format-foreground = ${settings/colors.foreground}
+format-prefix-background = ${settings/colors.i3}
+format-prefix-foreground = ${settings/colors.title-foreground}
+label-focused-foreground = ${settings/colors.i3-focused}
+label-focused-background = ${settings/colors.label-background}
+label-separator-background = ${settings/colors.label-background}
+label-separator-foreground = ${settings/colors.i3-separator}
+label-unfocused-foreground = ${settings/colors.i3-unfocused}
+label-unfocused-background = ${settings/colors.label-background}
+label-urgent-background = ${settings/colors.label-background}
+
+[module/new-workspace]
+type = custom/text
+
+content = "%{A1:playerctl play-pause:}    %{A}"
+
+content-background = ${settings/colors.i3-unfocused}
+content-foreground = ${settings/colors.i3-focused}
+
+[module/xwindow]
+type = internal/xwindow
+
+format-padding = ${spacing.padding}
+format-prefix = "    "
+format-prefix-font = 4
+format-prefix-margin-left = ${spacing.padding}
+
+label = "  %title%  "
+label-maxlen = 200
+
+format-prefix-background = ${settings/colors.xwindow}
+format-prefix-foreground = ${settings/colors.title-foreground}
+label-background = ${settings/colors.label-background}
+
+[module/mpd-title]
+type = custom/text
+
+content = "    "
+
+content-background = ${settings/colors.mpd-title}
+content-foreground = ${settings/colors.title-foreground}
+
+[module/mpd]
+type = internal/mpd
+
+bar-progress-width = 8
+bar-progress-empty = ─
+bar-progress-fill = ─
+bar-progress-indicator = >
+
+format-online = "%{A1:playerctl play-pause:}%{A4:playerctl previous:}%{A5:playerctl next:}  <label-song> [<bar-progress>]  %{A}%{A}%{A}"
+format-paused = "%{A1:playerctl play-pause:}%{A4:playerctl previous:}%{A5:playerctl next:}  <label-song> [paused]  %{A}%{A}%{A}"
+format-stopped = "%{A1:playerctl play-pause:}%{A4:playerctl previous:}%{A5:playerctl next:}  [stopped]  %{A}%{A}%{A}"
+
+label-song = "%artist% - %album% - %title%"
+label-song-maxlen = 150
+label-song-ellipsis = true
+
+bar-progress-fill-foreground = ${settings/colors.mpd-progress}
+bar-progress-empty-foreground = ${settings/colors.bar-empty}
+; bar-progress-indicator-foreground = ${settings/colors.mpd-progress}
+format-online-background = ${settings/colors.label-background}
+format-online-foreground = ${settings/colors.foreground}
+
+;;; using ramp-volume-* instead of format-volume-prefix, format-muted-prefix, etc...
+;;; as a result, the colors for those format/labels are defined but unused
+[module/volume]
+type = internal/alsa
+
+bar-volume-width = 8
+bar-volume-empty = ─
+bar-volume-fill = ─
+bar-volume-indicator = ─
+
+format-muted = "<label-muted>%{B#2e3132}  %{F#1d2021}<bar-volume>%{F-}  %{B-} "
+; format-muted-prefix = "  "
+format-volume = "<ramp-volume>%{B#2e3132}  <bar-volume>  %{B-}"
+format-volume-padding = 1 ; TODO: FIXME: bug? without it there is no padding between volume and date
+; format-volume-prefix = "  "
+
+label-muted = "    "
+; label-volume = " %percentage%% "
+
+ramp-volume-0 = "    "
+ramp-volume-1 = "    "
+ramp-volume-2 = "    "
+
+bar-volume-empty-foreground = ${settings/colors.bar-empty}
+bar-volume-fill-foreground = ${settings/colors.volume-progress}
+bar-volume-indicator-foreground = ${settings/colors.volume-progress}
+format-muted-prefix-background = ${settings/colors.volume}
+format-muted-prefix-foreground = ${settings/colors.title-foreground}
+format-volume-prefix-background = ${settings/colors.volume}
+format-volume-prefix-foreground = ${settings/colors.title-foreground}
+label-muted-background = ${settings/colors.volume-muted}
+label-muted-foreground = ${settings/colors.title-foreground}
+label-volume-background = ${settings/colors.label-background}
+ramp-volume-background = ${settings/colors.volume}
+ramp-volume-foreground = ${settings/colors.title-foreground}
+
+[module/date]
+type = internal/date
+
+date = " %a %m/%d "
+interval = 5
+
+format-padding = ${spacing.padding}
+format-prefix = "    "
+
+label = " %date% "
+
+format-prefix-background = ${settings/colors.date}
+format-prefix-foreground = ${settings/colors.title-foreground}
+label-background = ${settings/colors.label-background}
+
+[module/time]
+type = internal/date
+
+interval = 5
+;;; 12 hour time: " %l:%M %p ", 24 hour time: " %H:%M "
+time = " %H:%M "
+
+format-padding = ${spacing.padding}
+format-prefix = "    "
+
+label = " %time% "
+label-margin-right = ${spacing.padding}
+
+format-prefix-background = ${settings/colors.time}
+format-prefix-foreground = ${settings/colors.title-foreground}
+label-background = ${settings/colors.label-background}
+
+[module/powermenu]
+type = custom/menu
+
+label-close = "    "
+
+label-open = "  "
+label-open-margin-right = ${spacing.margin}
+label-open-padding-left = ${spacing.padding}
+label-open-padding-right = ${spacing.padding}
+
+;;; button for ending current session
+menu-0-0 = "  LOGOUT  /" 
+menu-0-0-exec = "i3-msg exit"
+
+;;; button for restarting system
+menu-0-1 = "  RESTART  /" 
+menu-0-1-exec = "reboot"
+
+;;; button for powering off system
+menu-0-2 = "  POWER  "
+menu-0-2-exec = "poweroff"
+menu-0-2-margin-right = ${spacing.margin}
+
+label-close-background = ${settings/colors.menu-close}
+label-close-foreground = ${settings/colors.title-foreground}
+label-open-background = ${settings/colors.menu}
+label-open-foreground = ${settings/colors.title-foreground}
+menu-0-0-background = ${settings/colors.label-background}
+menu-0-0-foreground = ${settings/colors.foreground}
+menu-0-1-background = ${settings/colors.label-background}
+menu-0-1-foreground = ${settings/colors.foreground}
+menu-0-2-background = ${settings/colors.label-background}
+menu-0-2-foreground = ${settings/colors.foreground}
