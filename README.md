@@ -14,3 +14,4 @@ Theme for:
 ## TODO
 
 Screenshots, refactoring, better structure, completely implement the plus button a new workspace(and release) etc...
+Add multiple themes based on popular gtk themes to seamlessly integrate, also take advantage of pywal.
